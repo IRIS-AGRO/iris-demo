@@ -14,7 +14,10 @@ export const Navbar = () => {
                     <img className="col-12 invert" src="https://img.icons8.com/pulsar-line/256/settings.png" draggable="false"/>
                 </button>
                 <button className="border-0 bg-dark col-1" href="/user">
-                    <img className="col-12 invert" src="https://img.icons8.com/pulsar-line/256/name.png" draggable="false"/>
+                    <img className="col-12 invert" src="https://img.icons8.com/?size=256&id=AZazdsitsrgg&format=png" draggable="false"/>
+                </button>
+                <button className="border-0 bg-dark col-1" href="/user">
+                    <img className="col-12 invert" src="https://img.icons8.com/?size=256&id=UJnkuFxctx6X&format=png" draggable="false"/>
                 </button>
             </div>
         </nav>

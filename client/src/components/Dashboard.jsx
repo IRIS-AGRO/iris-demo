@@ -71,7 +71,7 @@ const [charData, setCharData] = useState([])
       <div className="col-3">
         <div className="p-5">
             <label className="">Seleccionar Intervalo:</label>
-            <select id="select-1" className="form-select" aria-label="Default select example" onChange={handleChange}>
+            <select id="select-1" className="form-select bg-secondary text-white" aria-label="Default select example" onChange={handleChange}>
                 {options.map(option => (
                     <option key={option.value} value={option.value}>
                         {option.text}

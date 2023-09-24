@@ -1,13 +1,17 @@
 .bg-dark{
-    background-color: #282b36;
+    background-color: #282b36 !important;
 }
 
 .bg-secondary{
-    background-color: #3f414d;
+    background-color: #3f414d !important;
 }
 
 .bg-btn{
     background-color: #e17322;
+}
+
+.bg-none{
+    background-color: rgba(0,0,0,0);
 }
 
 .image-center{
@@ -28,7 +32,7 @@
 @keyframes card-in {
     0%{
         opacity: 0;
-        transform: translateX(500px);
+        transform: translateX(30px);
     }
     100%{
         opacity: 1;

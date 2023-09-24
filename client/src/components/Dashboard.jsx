@@ -40,6 +40,7 @@ export const Dashboard = () => {
             Ver Lagunas
         </button>
       </div>
+      {/* Aqui pobe ek gradrfguhdfsgsdfjdsfgdfagadfg */}
     </div>
   )
 }

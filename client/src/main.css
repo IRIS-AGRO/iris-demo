@@ -1,0 +1,15 @@
+.bg-dark{
+    background-color: #282b36;
+}
+
+.bg-secondary{
+    background-color: #3f414d;
+}
+
+.image-center{
+    margin: auto !important;
+}
+
+.invert{
+    filter: invert(70%);
+}

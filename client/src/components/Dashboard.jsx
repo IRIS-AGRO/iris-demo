@@ -29,12 +29,17 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className='row bg-dark text-white'>
+    <div className='row bg-dark text-white pt-4 pb-4'>
       <Carousel onRight={handleRightSlide} onLeft={handleLeftSlide}>
         {data.slice(startIndex, startIndex + itemsPerPage).map((num) => (
           <CarouselCard key={num} num={num} />
         ))}
       </Carousel>
+      <div className="col-4 p-5">
+        <button className="bg-btn border-0 col-12 p-4 text-white rounded-4 fs-3 press">
+            Ver Lagunas
+        </button>
+      </div>
     </div>
   )
 }

@@ -1,12 +1,18 @@
-import { Laguna } from './Laguna'
+import { useEffect} from "react"
+import { Laguna } from "./Laguna"
+import { useLagunasStore } from "../store/lagunas"
 
 export const Lagunas = ({ children }) => {
-    return (
-        <div className='col-12 row ms-0 me-0'>
-            <Laguna></Laguna>
-            <Laguna></Laguna>
-            <Laguna></Laguna>
-            <Laguna></Laguna>
-        </div>
-    );
-};
+  const fetchlagunas = useLagunasStore((state) => state.fetchLagunas)
+  const lagunas = useLagunasStore((state) => state.lagunas)
+
+  useEffect(() => {
+    fetchlagunas()
+  }, [])
+
+  return (<div className='col-12 row ms-0 me-0'>
+    {lagunas.map(laguna => (
+        <Laguna id={laguna.id} orp={laguna.orp} od={laguna.od} cantidad={laguna.aireadores.length} />
+    ))}
+  </div>)
+}

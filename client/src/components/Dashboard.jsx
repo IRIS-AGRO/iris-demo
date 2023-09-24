@@ -1,5 +1,6 @@
 import { Carousel } from "./Carousel"
-import { CarouselCard } from "./CarouselCard"
+import { Laguna } from "./Laguna"
+import { ChartContainer } from "./ChartContainer"
 import { useState } from "react"
 
 export const Dashboard = () => {
@@ -30,9 +31,13 @@ export const Dashboard = () => {
 
   return (
     <div className='row bg-dark text-white pt-4 pb-4'>
+      <div>
+        <h1 className="mb-0 ps-5">Lagunas con Prioridad</h1>
+        <h2 className="fs-5 ps-5 text-secondary fw-light">Lista de lagunas con problemas psicologicos.</h2>
+      </div>
       <Carousel onRight={handleRightSlide} onLeft={handleLeftSlide}>
         {data.slice(startIndex, startIndex + itemsPerPage).map((num) => (
-          <CarouselCard key={num} num={num} />
+          <Laguna key={num} num={num} />
         ))}
       </Carousel>
       <div className="col-4 p-5">
@@ -40,7 +45,11 @@ export const Dashboard = () => {
             Ver Lagunas
         </button>
       </div>
-      {/* Aqui pobe ek gradrfguhdfsgsdfjdsfgdfagadfg */}
+      <div className="pt-4">
+        <h1 className="mb-0 ps-5">Grafico</h1>
+        <h2 className="fs-5 ps-5 text-secondary fw-light">Va a tener info del consumo. (Muestra)</h2>
+      </div>
+      <ChartContainer></ChartContainer>
     </div>
   )
 }

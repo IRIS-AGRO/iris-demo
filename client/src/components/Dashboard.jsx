@@ -75,10 +75,16 @@ export const Dashboard = () => {
       </Carousel>
       <div className='col-4 p-5'>
         <button
-          className='bg-btn border-0 col-12 p-4 text-white rounded-4 fs-3 press'
+          className='bg-btn border-0 col-12 p-4 text-white rounded-4 fs-3 press mb-1'
           onClick={() => navigate("/lagunas")}
         >
           Ver Lagunas
+        </button>
+        <button
+          className='bg-success border-0 col-12 p-4 text-white rounded-4 fs-3 press'
+          onClick={() => navigate("/lagunas")}
+        >
+          Otro Boton
         </button>
       </div>
       <div className='pt-4'>

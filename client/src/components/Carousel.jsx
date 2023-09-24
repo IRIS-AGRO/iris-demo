@@ -8,7 +8,7 @@ export const Carousel = ({ children, onRight, onLeft }) => {
         <button className="col-1 bg-dark border-0" onClick={onLeft}>
             <img className="col-12 invert" src="https://img.icons8.com/?size=1000&id=sbc7OUEFZIVS&format=png" />
         </button>
-        <div className="col-10 row">
+        <div className="col-10 row row-cols-2">
             {children}
         </div>
         <button className="col-1 bg-dark border-0" onClick={onRight}>

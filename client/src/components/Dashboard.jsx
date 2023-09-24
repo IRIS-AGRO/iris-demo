@@ -43,14 +43,12 @@ export const Dashboard = () => {
     setSelected(event.target.value)
   }
 
-  const data = ["1", "2", "3", "4", "5", "6", "7", "8"] //SOY TONY STARK
+  const itemsToShow = Math.min(itemsPerPage, lagunas.length - startIndex)
 
   const handleRightSlide = () => {
     const newStartIndex = startIndex + itemsPerPage
 
-    if (newStartIndex >= data.length) {
-      setStartIndex(0)
-    } else {
+    if (newStartIndex < lagunas.length) {
       setStartIndex(newStartIndex)
     }
   }
@@ -58,9 +56,7 @@ export const Dashboard = () => {
   const handleLeftSlide = () => {
     const newStartIndex = startIndex - itemsPerPage
 
-    if (newStartIndex < 0) {
-      setStartIndex(data.length - itemsPerPage)
-    } else {
+    if (newStartIndex >= 0) {
       setStartIndex(newStartIndex)
     }
   }
@@ -78,14 +74,23 @@ export const Dashboard = () => {
         onLeft={handleLeftSlide}
         ableToSlide={ableToSlide}
       >
-        {lagunas.slice(startIndex, startIndex + itemsPerPage).map((laguna) => (
-          <Laguna
-            id={laguna.id}
-            orp={laguna.orp}
-            od={laguna.od}
-            cantidad={laguna.aireadores.length}
-          />
-        ))}
+        {Array.from({ length: itemsToShow }).map((_, index) => {
+          const lagunaIndex = startIndex + index
+          const laguna = lagunas[lagunaIndex]
+          if (laguna) {
+            return (
+              <Laguna
+                key={laguna.id}
+                id={laguna.id}
+                orp={laguna.orp}
+                od={laguna.od}
+                cantidad={laguna.aireadores.length}
+              />
+            )
+          } else {
+            return <div key={index} style={{ width: "100%" }}></div>
+          }
+        })}
       </Carousel>
       <div className='col-4 p-5'>
         <button

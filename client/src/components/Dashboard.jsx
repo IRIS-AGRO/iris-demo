@@ -5,15 +5,25 @@ import { useState } from "react"
 import { LineChart } from "./LineChart"
 import { useNavigate } from "react-router-dom"
 import { useLagunasStore } from "../store/lagunas"
-import { useEffect} from "react"
+import { useEffect } from "react"
 
 export const Dashboard = () => {
   const fetchlagunas = useLagunasStore((state) => state.fetchLagunas)
   const lagunas = useLagunasStore((state) => state.lagunas)
 
+  const [ableToSlide, setAbleToSlide] = useState(true)
+
   useEffect(() => {
     fetchlagunas()
-  }, [])
+
+    if (lagunas.length <= 2) {
+      setAbleToSlide(false)
+    } else {
+      setAbleToSlide(true)
+    }
+
+    console.log(lagunas.length)
+  }, [lagunas.length])
 
   const [startIndex, setStartIndex] = useState(0)
   const itemsPerPage = 2
@@ -63,7 +73,11 @@ export const Dashboard = () => {
           Lista de lagunas con problemas psicologicos.
         </h2>
       </div>
-      <Carousel onRight={handleRightSlide} onLeft={handleLeftSlide}>
+      <Carousel
+        onRight={handleRightSlide}
+        onLeft={handleLeftSlide}
+        ableToSlide={ableToSlide}
+      >
         {lagunas.slice(startIndex, startIndex + itemsPerPage).map((laguna) => (
           <Laguna
             id={laguna.id}

@@ -3,6 +3,7 @@ import { Laguna } from "./Laguna"
 import { ChartContainer } from "./ChartContainer"
 import { useState } from "react"
 import { LineChart } from "./LineChart"
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
 const [charData, setCharData] = useState([])

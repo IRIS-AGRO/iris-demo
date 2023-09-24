@@ -18,6 +18,10 @@
     margin: auto !important;
 }
 
+.just-text{
+    text-align: justify;
+}
+
 .invert{
     filter: invert(70%);
     transition: 0.2s;

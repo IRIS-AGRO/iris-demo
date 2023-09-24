@@ -4,6 +4,7 @@ import { Navbar } from './components/Navbar'
 import './main.css'
 import { Dashboard } from './components/Dashboard'
 import { Card } from './components/Card'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,9 +12,9 @@ function App() {
   return (
     <Container>
       <Navbar></Navbar>
-      <Dashboard>
-        
-      </Dashboard>
+      <Routes>
+        <Route path='/' element={<Dashboard />} />
+      </Routes>
     </Container>
   )
 }

@@ -85,6 +85,7 @@ export const Dashboard = () => {
                 orp={laguna.orp}
                 od={laguna.od}
                 cantidad={laguna.aireadores.length}
+                Aireadores={laguna.aireadores}
               />
             )
           } else {

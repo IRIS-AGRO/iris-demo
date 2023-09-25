@@ -1,5 +1,5 @@
 import logo from "../assets/logo.png"
-import { useLocation } from "react-router-dom"
+import { useLocation, Navigate } from "react-router-dom"
 
 const z = {
   zIndex: -10
@@ -8,6 +8,7 @@ const z = {
 export const Navbar = () => {
   const location = useLocation()
   const isOnLagunasPage = location.pathname === "/lagunas"
+
 
   return (
     <nav className='row bg-dark text-center p-3' style={z}>

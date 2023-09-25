@@ -92,19 +92,18 @@ export const Dashboard = () => {
           }
         })}
       </Carousel>
-      <div className='col-4 p-5'>
+      <div className='col-4 p-4'>
         <button
-          className='bg-btn border-0 col-12 p-4 text-white rounded-4 fs-3 press mb-1'
+          className='bg-btn border-0 col-12 p-3 text-white rounded-4 fs-3 press'
           onClick={() => navigate("/lagunas")}
         >
           Ver Lagunas
         </button>
-        <button
-          className='bg-success border-0 col-12 p-4 text-white rounded-4 fs-3 press'
-          onClick={() => navigate("/lagunas")}
-        >
-          Otro Boton
-        </button>
+        <div className="pt-3">
+          <button className='bg-success border-0 col-12 p-3 text-white rounded-4 fs-3 press'>
+            Otro Boton
+          </button>
+        </div>
       </div>
       <div className='pt-4'>
         <h1 className='mb-0 ps-5'>Grafico</h1>
@@ -115,9 +114,9 @@ export const Dashboard = () => {
       <ChartContainer>
         <LineChart option={selected}></LineChart>
       </ChartContainer>
-      <div className='col-3'>
-        <div className='p-5'>
-          <label className=''>Seleccionar Intervalo:</label>
+      <div className='col-3 row text-center'>
+        <div className='p-5 col-12'>
+          <label className='pb-2 fs-5'>Seleccionar Intervalo:</label>
           <select
             id='select-1'
             className='form-select bg-secondary text-white'
@@ -133,13 +132,7 @@ export const Dashboard = () => {
         </div>
         <div className='col-12 p-3 pt-0'>
           <p className='bg-secondary rounded-4 p-3 just-text'>
-            El gráfico ubicado a la derecha muestra la función esencial al
-            proporcionar una representación visual detallada de la información
-            relacionada con el consumo global de las lagunas. Este recurso
-            gráfico es una herramienta invaluable para la gestión de datos sobre
-            el uso de lagunas, ya que permite observar y analizar de diversas
-            maneras cómo evoluciona esta información a lo largo del tiempo, lo
-            que facilita una toma de decisiones más informada y eficiente.
+          El gráfico de la izquierda representa datos ficticios sobre el consumo de lagunas. Aunque actualmente es ilustrativo, en la realidad serviría para gestionar y comprender mejor la información temporal del consumo de lagunas.
           </p>
         </div>
       </div>

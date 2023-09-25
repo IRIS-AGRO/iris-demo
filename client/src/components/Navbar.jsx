@@ -1,15 +1,25 @@
 import logo from "../assets/logo.png"
 import { useLocation } from "react-router-dom"
 
+const z = {
+  zIndex: -10
+}
+
 export const Navbar = () => {
   const location = useLocation()
   const isOnLagunasPage = location.pathname === "/lagunas"
 
   return (
-    <nav className='row bg-dark text-center p-3'>
-      <div className='col-5'>
+    <nav className='row bg-dark text-center p-3' style={z}>
+      <div className='col-5 text-start'>
         {isOnLagunasPage && (
-          <h1>PICO PAL QUE LEE</h1>
+          <button className='border-0 bg-dark col-1' href='/user'>
+            <img
+              className='col-12 invert'
+              src='https://img.icons8.com/?size=256&id=pVOup2X72g9B&format=png'
+              draggable='false'
+            />
+          </button>
         )}
       </div>
       <a href='/' className='col-2'>

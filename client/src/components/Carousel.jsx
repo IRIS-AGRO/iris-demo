@@ -19,7 +19,7 @@ export const Carousel = ({ children, onRight, onLeft, ableToSlide }) => {
   console.log(ableToSlide)
 
   return (
-    <div className='ms-0 me-0 col-8 row' style={of}>
+    <div className='ms-0 me-0 col-8 row pt-3' style={of}>
       <button
         className='col-1 bg-dark border-0'
         onClick={() => handleSlide(onLeft)}

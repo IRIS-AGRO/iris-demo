@@ -14,7 +14,7 @@ export const Navbar = () => {
     <nav className='row bg-dark text-center p-3' style={z}>
       <div className='col-5 text-start'>
         {isOnLagunasPage && (
-          <button className='border-0 bg-dark col-1' href='/user'>
+          <button className='border-0 bg-dark col-1'>
             <img
               className='col-12 invert'
               src='https://img.icons8.com/?size=256&id=pVOup2X72g9B&format=png'
@@ -34,14 +34,14 @@ export const Navbar = () => {
             draggable='false'
           />
         </button>
-        <button className='border-0 bg-dark col-1' href='/user'>
+        <button className='border-0 bg-dark col-1'>
           <img
             className='col-12 invert'
             src='https://img.icons8.com/?size=256&id=AZazdsitsrgg&format=png'
             draggable='false'
           />
         </button>
-        <button className='border-0 bg-dark col-1' href='/user'>
+        <button className='border-0 bg-dark col-1'>
           <img
             className='col-12 invert'
             src='https://img.icons8.com/?size=256&id=UJnkuFxctx6X&format=png'

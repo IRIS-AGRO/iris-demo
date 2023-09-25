@@ -17,7 +17,7 @@ const content = {
   top: "5%",
   left: "50%",
   transform: "translateX(-50%)",
-  overflowY: "hidden",
+  overflowY: "auto",
   overflowX: "hidden",
   zIndex: 20,
 }
@@ -57,7 +57,7 @@ export const Dialog = ({
             />
           </button>
         </div>
-        <div className='col-12 row mx-auto p-2 ps-5 pe-5'>
+        <div className='col-12 row mx-auto p-2 ps-5 pe-5 pb-5'>
           <div className='col-8'>
             <h1 className='fs-2 mb-0'>Laguna {id}</h1>
             <h2 className='fs-5 text-secondary fw-light'>Aireadores</h2>
@@ -69,7 +69,7 @@ export const Dialog = ({
           </div>
           <div className='bg-secondary rounded-4 p-4 mt-5 row row-cols-6 mx-auto'>
             {Aireadores.length === 0 ? (
-              <p className='text-center'>No hay aireadores</p>
+              <p className='col-12 fs-3 fw-light text-center'>No hay aireadores asociados a la laguna...</p>
             ) : (
               Aireadores.map((aireador) => (
                 <Aireador

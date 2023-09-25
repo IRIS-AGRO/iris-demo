@@ -1,6 +1,7 @@
 import { useEffect} from "react"
 import { Laguna } from "./Laguna"
 import { useLagunasStore } from "../store/lagunas"
+import { Dialog } from './Dialog'
 
 export const Lagunas = ({ children }) => {
   const fetchlagunas = useLagunasStore((state) => state.fetchLagunas)
@@ -10,9 +11,11 @@ export const Lagunas = ({ children }) => {
     fetchlagunas()
   }, [])
 
-  return (<div className='col-12 row ms-0 me-0'>
+  return (
+  <div className='col-12 row row-cols-4 ms-0 me-0'>
     {lagunas.map(laguna => (
         <Laguna id={laguna.id} orp={laguna.orp} od={laguna.od} cantidad={laguna.aireadores.length} />
     ))}
-  </div>)
+  </div>
+  )
 }

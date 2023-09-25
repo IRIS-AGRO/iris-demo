@@ -5,15 +5,25 @@ import { useState } from "react"
 import { LineChart } from "./LineChart"
 import { useNavigate } from "react-router-dom"
 import { useLagunasStore } from "../store/lagunas"
-import { useEffect} from "react"
+import { useEffect } from "react"
 
 export const Dashboard = () => {
   const fetchlagunas = useLagunasStore((state) => state.fetchLagunas)
   const lagunas = useLagunasStore((state) => state.lagunas)
 
+  const [ableToSlide, setAbleToSlide] = useState(true)
+
   useEffect(() => {
     fetchlagunas()
-  }, [])
+
+    if (lagunas.length <= 2) {
+      setAbleToSlide(false)
+    } else {
+      setAbleToSlide(true)
+    }
+
+    console.log(lagunas.length)
+  }, [lagunas.length])
 
   const [startIndex, setStartIndex] = useState(0)
   const itemsPerPage = 2
@@ -33,14 +43,12 @@ export const Dashboard = () => {
     setSelected(event.target.value)
   }
 
-  const data = ["1", "2", "3", "4", "5", "6", "7", "8"] //SOY TONY STARK
+  const itemsToShow = Math.min(itemsPerPage, lagunas.length - startIndex)
 
   const handleRightSlide = () => {
     const newStartIndex = startIndex + itemsPerPage
 
-    if (newStartIndex >= data.length) {
-      setStartIndex(0)
-    } else {
+    if (newStartIndex < lagunas.length) {
       setStartIndex(newStartIndex)
     }
   }
@@ -48,9 +56,7 @@ export const Dashboard = () => {
   const handleLeftSlide = () => {
     const newStartIndex = startIndex - itemsPerPage
 
-    if (newStartIndex < 0) {
-      setStartIndex(data.length - itemsPerPage)
-    } else {
+    if (newStartIndex >= 0) {
       setStartIndex(newStartIndex)
     }
   }
@@ -63,23 +69,41 @@ export const Dashboard = () => {
           Lista de lagunas con problemas psicologicos.
         </h2>
       </div>
-      <Carousel onRight={handleRightSlide} onLeft={handleLeftSlide}>
-        {lagunas.slice(startIndex, startIndex + itemsPerPage).map((laguna) => (
-          <Laguna
-            id={laguna.id}
-            orp={laguna.orp}
-            od={laguna.od}
-            cantidad={laguna.aireadores.length}
-          />
-        ))}
+      <Carousel
+        onRight={handleRightSlide}
+        onLeft={handleLeftSlide}
+        ableToSlide={ableToSlide}
+      >
+        {Array.from({ length: itemsToShow }).map((_, index) => {
+          const lagunaIndex = startIndex + index
+          const laguna = lagunas[lagunaIndex]
+          if (laguna) {
+            return (
+              <Laguna
+                key={laguna.id}
+                id={laguna.id}
+                orp={laguna.orp}
+                od={laguna.od}
+                cantidad={laguna.aireadores.length}
+              />
+            )
+          } else {
+            return <div key={index} style={{ width: "100%" }}></div>
+          }
+        })}
       </Carousel>
-      <div className='col-4 p-5'>
+      <div className='col-4 p-4'>
         <button
-          className='bg-btn border-0 col-12 p-4 text-white rounded-4 fs-3 press'
+          className='bg-btn border-0 col-12 p-3 text-white rounded-4 fs-3 press'
           onClick={() => navigate("/lagunas")}
         >
           Ver Lagunas
         </button>
+        <div className="pt-3">
+          <button className='bg-success border-0 col-12 p-3 text-white rounded-4 fs-3 press'>
+            Otro Boton
+          </button>
+        </div>
       </div>
       <div className='pt-4'>
         <h1 className='mb-0 ps-5'>Grafico</h1>
@@ -90,9 +114,9 @@ export const Dashboard = () => {
       <ChartContainer>
         <LineChart option={selected}></LineChart>
       </ChartContainer>
-      <div className='col-3'>
-        <div className='p-5'>
-          <label className=''>Seleccionar Intervalo:</label>
+      <div className='col-3 row text-center'>
+        <div className='p-5 col-12'>
+          <label className='pb-2 fs-5'>Seleccionar Intervalo:</label>
           <select
             id='select-1'
             className='form-select bg-secondary text-white'
@@ -108,13 +132,7 @@ export const Dashboard = () => {
         </div>
         <div className='col-12 p-3 pt-0'>
           <p className='bg-secondary rounded-4 p-3 just-text'>
-            El gráfico ubicado a la derecha muestra la función esencial al
-            proporcionar una representación visual detallada de la información
-            relacionada con el consumo global de las lagunas. Este recurso
-            gráfico es una herramienta invaluable para la gestión de datos sobre
-            el uso de lagunas, ya que permite observar y analizar de diversas
-            maneras cómo evoluciona esta información a lo largo del tiempo, lo
-            que facilita una toma de decisiones más informada y eficiente.
+          El gráfico de la izquierda representa datos ficticios sobre el consumo de lagunas. Aunque actualmente es ilustrativo, en la realidad serviría para gestionar y comprender mejor la información temporal del consumo de lagunas.
           </p>
         </div>
       </div>

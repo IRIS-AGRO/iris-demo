@@ -1,5 +1,6 @@
 import logo from "../assets/logo.png"
 import { useLocation, Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const z = {
   zIndex: -10
@@ -8,6 +9,8 @@ const z = {
 export const Navbar = () => {
   const location = useLocation()
   const isOnLagunasPage = location.pathname === "/lagunas"
+
+  const navigate = useNavigate()
 
 
   return (
@@ -19,6 +22,7 @@ export const Navbar = () => {
               className='col-12 invert'
               src='https://img.icons8.com/?size=256&id=pVOup2X72g9B&format=png'
               draggable='false'
+              onClick={() => navigate("/")}
             />
           </button>
         )}

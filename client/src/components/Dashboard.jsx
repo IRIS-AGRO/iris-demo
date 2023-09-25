@@ -66,7 +66,7 @@ export const Dashboard = () => {
       <div>
         <h1 className='mb-0 ps-5'>Lagunas con Prioridad</h1>
         <h2 className='fs-5 ps-5 text-secondary fw-light'>
-          Lista de lagunas con problemas psicologicos.
+          Lista de lagunas con problemas psicológicos.
         </h2>
       </div>
       <Carousel
@@ -102,7 +102,7 @@ export const Dashboard = () => {
         </button>
         <div className="pt-3">
           <button className='bg-success border-0 col-12 p-3 text-white rounded-4 fs-3 press'>
-            Otro Boton
+            Otro Botón
           </button>
         </div>
       </div>

@@ -66,7 +66,7 @@ export const Dashboard = () => {
       <div>
         <h1 className='mb-0 ps-5'>Lagunas con Prioridad</h1>
         <h2 className='fs-5 ps-5 text-secondary fw-light'>
-          Lista de lagunas con problemas psicológicos.
+          Lista de lagunas con problemas.
         </h2>
       </div>
       <Carousel

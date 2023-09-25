@@ -100,14 +100,14 @@ export const Dashboard = () => {
         >
           Ver Lagunas
         </button>
-        <div className="pt-3">
+        <div className='pt-3'>
           <button className='bg-success border-0 col-12 p-3 text-white rounded-4 fs-3 press'>
             Otro Botón
           </button>
         </div>
       </div>
       <div className='pt-4'>
-        <h1 className='mb-0 ps-5'>Grafico</h1>
+        <h1 className='mb-0 ps-5'>Gráfico</h1>
         <h2 className='fs-5 ps-5 text-secondary fw-light'>
           Va a tener info del consumo. (Muestra)
         </h2>
@@ -133,7 +133,10 @@ export const Dashboard = () => {
         </div>
         <div className='col-12 p-3 pt-0'>
           <p className='bg-secondary rounded-4 p-3 just-text'>
-          El gráfico de la izquierda representa datos ficticios sobre el consumo de lagunas. Aunque actualmente es ilustrativo, en la realidad serviría para gestionar y comprender mejor la información temporal del consumo de lagunas.
+            El gráfico de la izquierda representa datos ficticios sobre el
+            consumo de lagunas. Aunque actualmente es ilustrativo, en la
+            realidad serviría para gestionar y comprender mejor la información
+            temporal del consumo de lagunas.
           </p>
         </div>
       </div>

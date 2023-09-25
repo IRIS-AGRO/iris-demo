@@ -41,7 +41,6 @@ export const LineChart = ({ option }) => {
     handleChange(option)
   }, [option])
 
-  // Datos del gráfico
   const data = {
     labels: [
       "00:00",
@@ -59,20 +58,16 @@ export const LineChart = ({ option }) => {
 
   console.log(values)
 
-  // Escala para el eje Y (ajusta el valor según tus datos)
   const scaleY = 5
 
-  // Alto del gráfico
   const chartHeight = 300
 
-  // Calcula el espacio horizontal entre los puntos en función del ancho total
   const spacingX = chartWidth ? chartWidth / (data.values.length - 1) : 0
 
   return (
     <div className='text-white'>
       <div ref={chartContainerRef} style={{ overflow: "visible" }}>
         <svg width={chartWidth} height={chartHeight}>
-          {/* Eje X */}
           <line
             x1='0'
             y1={chartHeight}
@@ -95,16 +90,13 @@ export const LineChart = ({ option }) => {
             )
           })}
 
-          {/* Eje Y */}
           <line x1='0' y1='0' x2='0' y2={chartHeight} stroke='#282b36' />
 
-          {/* Línea de gráfico */}
           {data.values.map((value, index) => {
             const x = index * spacingX
             const y = chartHeight - value * scaleY
             return <circle key={index} cx={x} cy={y} r='4' fill='#e17322' />
           })}
-          {/* Conectar puntos */}
           <polyline
             points={data.values
               .map((value, index) => {

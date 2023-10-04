@@ -1,5 +1,4 @@
 import { useLagunasStore } from "../store/lagunas";
-import React, { useState } from 'react';
 
 export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
   const turnOff = useLagunasStore((state) => state.turnOffAireador);

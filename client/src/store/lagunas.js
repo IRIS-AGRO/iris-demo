@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { db } from "../firebase/config"
-import { ref, onValue } from "firebase/database"
+import { ref, onValue, set } from "firebase/database"
 
 const lagunasRef = ref(db, "Lagunas/")
 
@@ -35,6 +35,14 @@ export const useLagunasStore = create((put, get) => {
           put({ lagunas: lagunasArray })
         }
       })
+    },
+    turnOffAireador: async (lagunaId, fireid) => {
+      set(ref(db, `Lagunas/${lagunaId}/Aireadores/${fireid}/encendido/`), false)
+      set(ref(db, `Lagunas/${lagunaId}/Aireadores/${fireid}/frecuencia`), 0)
+    },
+
+    turnOnAireador: async (lagunaId, fireid) => {
+      set(ref(db, `Lagunas/${lagunaId}/Aireadores/${fireid}/encendido/`), true)
     },
   }
 })

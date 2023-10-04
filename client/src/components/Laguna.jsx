@@ -21,6 +21,7 @@ export const Laguna = ({ id, od, orp, cantidad, Aireadores }) => {
         onOpen={open}
         onClose={handleClose}
         Aireadores={Aireadores}
+        lagunaId={id}
       />
       <button className='col p-3 bg-none border-0' onClick={() => setOpen(true)}>
         <div className='text-start bg-secondary p-2 pt-3 pb-3 rounded-4 card-in press row mx-auto'>

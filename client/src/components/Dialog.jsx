@@ -31,6 +31,7 @@ export const Dialog = ({
   od,
   orp,
   Aireadores,
+  lagunaId
 }) => {
   useEffect(() => {}, [Aireadores])
 
@@ -80,6 +81,7 @@ export const Dialog = ({
                   id={aireador.id}
                   frecuencia={aireador.frecuencia}
                   encendido={aireador.encendido}
+                  lagunaId={lagunaId}
                 ></Aireador>
               ))
             )}

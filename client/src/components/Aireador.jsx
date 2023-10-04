@@ -1,8 +1,10 @@
 import { useLagunasStore } from "../store/lagunas";
+import React, { useState } from 'react';
 
 export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
   const turnOff = useLagunasStore((state) => state.turnOffAireador);
   const turnOn = useLagunasStore((state) => state.turnOnAireador);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
 
   const handleToggleSwitch = () => {
     if (encendido) {
@@ -12,15 +14,15 @@ export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
       // Si está apagado, enciéndelo
       turnOn(lagunaId, id);
     }
+    // Cambia el estado del checkbox al hacer clic en él
+    setCheckboxChecked(!checkboxChecked);
   };
 
   return (
-    <div className='col p-3 border-0'>
+    <div className={`col p-3 border-0 ${checkboxChecked ? '' : 'disabled'}`}>
       <div className='text-start bg-dark text-center p-2 pt-2 pb-5 rounded-4 card-in press row mx-auto'>
         <span
-          className={`form-check form-switch p-2 pe-3 pb-4 ${
-            encendido ? 'text-success' : 'text-danger'
-          }`}
+          className='form-check form-switch p-2 pe-3 pb-4'
           style={{
             display: 'flex',
             justifyContent: 'right',
@@ -30,7 +32,10 @@ export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
           }}
         >
           <label className="switch">
-            <input type="checkbox" />
+            <input type="checkbox"
+            checked={checkboxChecked}
+            onChange={handleToggleSwitch}
+            />
             <span className="slider round"></span>
           </label>
         </span>

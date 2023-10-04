@@ -96,7 +96,7 @@ body{
 
   /* Switch CSS */
 
-  .switch {
+.switch {
     position: relative;
     display: inline-block;
     width: 35px;
@@ -135,11 +135,11 @@ body{
 
 input:checked + .slider {
     background-color: #e17322;
-    filter: drop-shadow(0px 0px 5px #e17322);
+    filter: drop-shadow(0px 0px 8px #e17322);
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #e17322;
 }
 
 input:checked + .slider:before {
@@ -156,3 +156,11 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+
+
+/* Desactivar Aireador */
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }

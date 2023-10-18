@@ -16,12 +16,6 @@ Iris Demo es una aplicación web que permite el acceso, monitoreo y automatizaci
 
 ## Instalación y Configuración
 
-### Requisitos Previos
-
-- Requisito 1
-- Requisito 2
-- ...
-
 ### Pasos de Instalación
 
 1. Clona este repositorio desde GitHub.
@@ -33,7 +27,7 @@ git clone https://github.com/tu-usuario/iris-demo.git
 2. Accede al directorio del proyecto.
 
 ```shell
-cd iris-demo
+cd iris-demo/client
 ```
 
 3. Instala las dependencias necesarias.
@@ -42,16 +36,10 @@ cd iris-demo
 npm install
 ```
 
-4. Configura las variables de entorno (si es necesario).
+4. Inicia la aplicación en modo de desarrollo.
 
 ```shell
-cp .env.example .env
-```
-
-5. Inicia la aplicación.
-
-```shell
-npm start
+npm run dev
 ```
 
 ## Uso
@@ -91,10 +79,6 @@ Si deseas contribuir al desarrollo de Iris Demo, sigue estos pasos:
 3. Realiza tus cambios y commitea: `git commit -m "Mi contribución"`
 4. Haz un push a tu rama: `git push origin mi-contribucion`
 5. Crea un pull request en GitHub.
-
-## Licencia
-
-Este proyecto está bajo la licencia [nombre-de-la-licencia]. Consulta el archivo LICENSE para más detalles.
 
 ## Contacto
 

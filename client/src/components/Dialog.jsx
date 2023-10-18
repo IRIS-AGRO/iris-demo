@@ -69,7 +69,7 @@ export const Dialog = ({
             <p className='m-0'>OD: {od}</p>
             <p className='m-0'>ORP: {orp}</p>
           </div>
-          <div className='bg-secondary rounded-4 p-4 mt-5 row row-cols-6 mx-auto'>
+          <div className='bg-secondary rounded-4 p-4 mt-5 row row-cols-5 mx-auto'>
             {Aireadores.length === 0 ? (
               <p className='col-12 fs-3 fw-light text-center'>
                 No hay aireadores asociados a la laguna...

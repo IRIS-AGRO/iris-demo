@@ -15,50 +15,31 @@ export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
   };
 
   return (
-    <div className='col p-3 border-0'>
-      <div className='text-start bg-dark text-center p-2 pt-5 pb-5 rounded-4 card-in press row mx-auto'>
+    <div className={`col p-3 border-0 ${encendido ? '' : 'disabled'}`}>
+      <div className='text-start bg-dark text-center p-2 pt-2 pb-5 rounded-4 card-in press row mx-auto'>
+        <span
+          className='form-check form-switch p-2 pe-3 pb-4'
+          style={{
+            display: 'flex',
+            justifyContent: 'right',
+            alignItems: 'right',
+            marginLeft: 7,
+            fontSize: 20,
+          }}
+        >
+          <label className="switch">
+            <input type="checkbox"
+            checked={encendido}
+            onChange={handleToggleSwitch}
+            />
+            <span className="slider round"></span>
+          </label>
+        </span>
         <h1 className='fs-4 fw-normal text-white'>Aireador:</h1>
         <h1 className='fs-5 fw-light text-white large-text'>{id}</h1>
         <h1 className='fs-5 fw-light text-secondary'>
           Consumo: {frecuencia} kw/h
         </h1>
-        <span>
-          {encendido ? (
-            <img
-              src='https://img.icons8.com/?size=30&id=FkQHNSmqWQWH&format=png'
-              alt='Encendido'
-            />
-          ) : (
-            <img
-              src='https://img.icons8.com/?size=30&id=Zyo5wDjgJxRW&format=png'
-              alt='Apagado'
-            />
-          )}
-        </span>
-        <span
-          className={`form-check form-switch lg ${
-            encendido ? 'text-success' : 'text-danger'
-          }`}
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginLeft: 5,
-            fontSize: 20,
-          }}
-        >
-          <label className='form-check-label'>
-            <input
-              className='form-check-input'
-              type='checkbox'
-              role='switch'
-              id='flexSwitchCheckDefault'
-              checked={encendido}
-              onChange={handleToggleSwitch}
-            />
-            {encendido ? 'Encendido' : 'Apagado'}
-          </label>
-        </span>
       </div>
     </div>
   );

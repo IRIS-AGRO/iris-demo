@@ -33,7 +33,7 @@ git clone https://github.com/tu-usuario/iris-demo.git
 2. Accede al directorio del proyecto.
 
 ```shell
-cd iris-demo
+cd iris-demo/client
 ```
 
 3. Instala las dependencias necesarias.
@@ -42,16 +42,10 @@ cd iris-demo
 npm install
 ```
 
-4. Configura las variables de entorno (si es necesario).
+4. Inicia la aplicación en modo de desarrollo.
 
 ```shell
-cp .env.example .env
-```
-
-5. Inicia la aplicación.
-
-```shell
-npm start
+npm run dev
 ```
 
 ## Uso

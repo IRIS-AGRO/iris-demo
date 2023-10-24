@@ -115,31 +115,8 @@ export const Dashboard = () => {
       <ChartContainer>
         <LineChart option={selected}></LineChart>
       </ChartContainer>
-      <div className='col-3 row text-center'>
-        <div className='p-5 col-12'>
-          <label className='pb-2 fs-5'>Seleccionar Intervalo:</label>
-          <select
-            id='select-1'
-            className='form-select bg-secondary text-white'
-            aria-label='Default select example'
-            onChange={handleChange}
-          >
-            {options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className='col-12 p-3 pt-0'>
-          <p className='bg-secondary rounded-4 p-3 just-text'>
-            El gráfico de la izquierda representa datos ficticios sobre el
-            consumo de lagunas. Aunque actualmente es ilustrativo, en la
-            realidad serviría para gestionar y comprender mejor la información
-            temporal del consumo de lagunas.
-          </p>
-        </div>
-      </div>
+      {/* <div className='col-3 row text-center'>
+      </div> */}
     </div>
   )
 }

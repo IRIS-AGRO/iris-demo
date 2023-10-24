@@ -1,115 +1,92 @@
-import React, { useRef, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
+import { Line } from "react-chartjs-2"
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from "chart.js"
+import { useConsumoStore } from "../store/consumo"
 
-export const LineChart = ({ option }) => {
-  const chartContainerRef = useRef(null)
-  const [chartWidth, setChartWidth] = useState(null)
+Chart.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler
+)
 
-  const [values, setValues] = useState([])
-
-  const fakes = [
-    [10, 25, 18, 32, 20, 59, 5, 10, 35],
-    [42, 17, 30, 8, 56, 23, 41, 12, 39],
-    [28, 9, 37, 14, 59, 27, 48, 3, 19],
-    [5, 59, 18, 43, 59, 59, 8, 37, 54],
-  ]
-
-  const handleChange = (option) => {
-    switch (option) {
-      case "1":
-        setValues(fakes[0])
-        break
-      case "2":
-        setValues(fakes[1])
-        break
-      case "3":
-        setValues(fakes[2])
-        break
-      case "4":
-        setValues(fakes[3])
-        break
-    }
-  }
+export const LineChart = () => {
+  const [dataSet, setDataSet] = useState([])
+  const consumo = useConsumoStore((state) => state.consumo)
+  const fetchConsumo = useConsumoStore((state) => state.fetchConsumo)
 
   useEffect(() => {
-    if (chartContainerRef.current) {
-      const width = chartContainerRef.current.offsetWidth
-      setChartWidth(width)
+    const interval = setInterval(() => {
+      fetchConsumo()
+      setDataSet((prevData) => {
+        if (prevData.length >= 20) {
+          prevData.shift()
+        }
+        return [...prevData, consumo]
+      })
+
+      setTimeLabels((prevLabels) => {
+        const currentTime = new Date(
+          new Date().getTime() - 1000
+        ).toLocaleTimeString()
+        return [...prevLabels, currentTime]
+      })
+    }, 1000)
+
+    return () => {
+      clearInterval(interval)
     }
+  }, [consumo])
 
-    console.log("option = " + option)
-
-    handleChange(option)
-  }, [option])
+  const timeLabels = dataSet.map((_, index) => {
+    const currentTime = new Date(
+      new Date().getTime() - 1000 * (dataSet.length - 1 - index)
+    ).toLocaleTimeString()
+    return currentTime
+  })
 
   const data = {
-    labels: [
-      "00:00",
-      "01:00",
-      "02:00",
-      "03:00",
-      "04:00",
-      "05:00",
-      "06:00",
-      "07:00",
-      "08:00",
+    labels: timeLabels,
+    datasets: [
+      {
+        label: "Consumo",
+        data: dataSet,
+        tension: 0.5,
+        fill: true,
+        borderColor: "rgba(225, 115, 34, 1)",
+        backgroundColor: "rgba(225, 115, 34, 0.5)",
+        pointRadius: 0,
+        pointBorderColor: "rgba(63, 65, 77)",
+        pointBackgroundColor: "rgba(225, 115, 34, 1)",
+      },
     ],
-    values,
   }
 
-  console.log(values)
+  const options = {
+    animation: {
+      duration: 0,
+    },
+    scales: {
+      y: {
+        min: 0,
+        max: 100,
+      },
+    },
+  }
 
-  const scaleY = 5
-
-  const chartHeight = 300
-
-  const spacingX = chartWidth ? chartWidth / (data.values.length - 1) : 0
-
-  return (
-    <div className='text-white'>
-      <div ref={chartContainerRef} style={{ overflow: "visible" }}>
-        <svg width={chartWidth} height={chartHeight}>
-          <line
-            x1='0'
-            y1={chartHeight}
-            x2={chartWidth}
-            y2={chartHeight}
-            stroke='#282b36'
-          />
-          {data.labels.map((label, index) => {
-            const x = index * spacingX
-            return (
-              <text
-                key={index}
-                x={x}
-                y={chartHeight + 15}
-                textAnchor='middle'
-                fill='white'
-              >
-                {label}
-              </text>
-            )
-          })}
-
-          <line x1='0' y1='0' x2='0' y2={chartHeight} stroke='#282b36' />
-
-          {data.values.map((value, index) => {
-            const x = index * spacingX
-            const y = chartHeight - value * scaleY
-            return <circle key={index} cx={x} cy={y} r='4' fill='#e17322' />
-          })}
-          <polyline
-            points={data.values
-              .map((value, index) => {
-                const x = index * spacingX
-                const y = chartHeight - value * scaleY
-                return `${x},${y}`
-              })
-              .join(" ")}
-            fill='none'
-            stroke='white'
-          />
-        </svg>
-      </div>
-    </div>
-  )
+  return <Line data={data} options={options} />
 }

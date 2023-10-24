@@ -26,27 +26,38 @@ Chart.register(
 
 export const LineChart = () => {
   const [dataSet, setDataSet] = useState([])
-  const [timeLabels, setTimeLabels] = useState([])
   const consumo = useConsumoStore((state) => state.consumo)
   const fetchConsumo = useConsumoStore((state) => state.fetchConsumo)
 
   useEffect(() => {
     const interval = setInterval(() => {
       fetchConsumo()
-      setDataSet((prevData) => [...prevData, consumo])
+      setDataSet((prevData) => {
+        if (prevData.length >= 20) {
+          prevData.shift()
+        }
+        return [...prevData, consumo]
+      })
 
       setTimeLabels((prevLabels) => {
-        const currentTime = new Date().toLocaleTimeString()
+        const currentTime = new Date(
+          new Date().getTime() - 100
+        ).toLocaleTimeString()
         return [...prevLabels, currentTime]
       })
-    }, 0)
+    }, 100)
 
     return () => {
       clearInterval(interval)
     }
   }, [consumo])
 
-  console.log(consumo)
+  const timeLabels = dataSet.map((_, index) => {
+    const currentTime = new Date(
+      new Date().getTime() - 100 * (dataSet.length - 1 - index)
+    ).toLocaleTimeString()
+    return currentTime
+  })
 
   const data = {
     labels: timeLabels,

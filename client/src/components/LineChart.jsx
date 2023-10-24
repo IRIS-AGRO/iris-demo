@@ -88,5 +88,5 @@ export const LineChart = () => {
     },
   }
 
-  return <Line data={data} height={81} options={options} />
+  return <Line data={data} height={80} options={options} />
 }

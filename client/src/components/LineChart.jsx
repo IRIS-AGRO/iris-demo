@@ -41,11 +41,11 @@ export const LineChart = () => {
 
       setTimeLabels((prevLabels) => {
         const currentTime = new Date(
-          new Date().getTime() - 100
+          new Date().getTime() - 1000
         ).toLocaleTimeString()
         return [...prevLabels, currentTime]
       })
-    }, 100)
+    }, 1000)
 
     return () => {
       clearInterval(interval)
@@ -54,7 +54,7 @@ export const LineChart = () => {
 
   const timeLabels = dataSet.map((_, index) => {
     const currentTime = new Date(
-      new Date().getTime() - 100 * (dataSet.length - 1 - index)
+      new Date().getTime() - 1000 * (dataSet.length - 1 - index)
     ).toLocaleTimeString()
     return currentTime
   })

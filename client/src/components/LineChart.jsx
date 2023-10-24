@@ -26,20 +26,20 @@ Chart.register(
 
 export const LineChart = () => {
   const [dataSet, setDataSet] = useState([])
-  const maxDataPoints = 20
+  const [timeLabels, setTimeLabels] = useState([])
   const consumo = useConsumoStore((state) => state.consumo)
   const fetchConsumo = useConsumoStore((state) => state.fetchConsumo)
 
   useEffect(() => {
     const interval = setInterval(() => {
       fetchConsumo()
-      setDataSet((prevData) => {
-        if (prevData.length >= maxDataPoints) {
-          prevData.shift()
-        }
-        return [...prevData, consumo]
+      setDataSet((prevData) => [...prevData, consumo])
+
+      setTimeLabels((prevLabels) => {
+        const currentTime = new Date().toLocaleTimeString()
+        return [...prevLabels, currentTime]
       })
-    }, 50)
+    }, 1)
 
     return () => {
       clearInterval(interval)
@@ -49,7 +49,7 @@ export const LineChart = () => {
   console.log(consumo)
 
   const data = {
-    labels: Array.from({ length: dataSet.length }, (_, i) => i),
+    labels: timeLabels,
     datasets: [
       {
         label: "Consumo",
@@ -58,7 +58,7 @@ export const LineChart = () => {
         fill: true,
         borderColor: "rgba(225, 115, 34, 1)",
         backgroundColor: "rgba(225, 115, 34, 0.5)",
-        pointRadius: 6,
+        pointRadius: 0,
         pointBorderColor: "rgba(63, 65, 77)",
         pointBackgroundColor: "rgba(225, 115, 34, 1)",
       },

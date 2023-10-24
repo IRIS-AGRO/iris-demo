@@ -39,7 +39,7 @@ export const LineChart = () => {
         const currentTime = new Date().toLocaleTimeString()
         return [...prevLabels, currentTime]
       })
-    }, 1)
+    }, 0)
 
     return () => {
       clearInterval(interval)

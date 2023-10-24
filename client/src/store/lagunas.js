@@ -4,7 +4,7 @@ import { ref, onValue, set } from "firebase/database"
 
 const lagunasRef = ref(db, "Lagunas/")
 
-export const useLagunasStore = create((put, get) => {
+export const useLagunasStore = create((put) => {
   return {
     lagunas: [],
     fetchLagunas: async () => {

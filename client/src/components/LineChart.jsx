@@ -22,22 +22,22 @@ ChartJS.register(
   Filler
 )
 
-const dataSex = [15,22,44,55]
-const tiempo = ['1', '2', '3', '4']
+const consumo = [15,22,44,55,66,53]
+const tiempo = ['00:00', '01:00', '02:00', '03:00','04:00','05:00']
 
 const data = {
   labels: tiempo,
   datasets: [
     {
-      label: 'Sexoo',
-      data: dataSex,
+      label: 'Consumo',
+      data: consumo,
       tension: 0.5,
       fill: true,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      pointRadius: 5,
-      pointBorderColor: 'rgba(255, 99, 132)',
-      pointBackgroundColor: 'rgba(255, 99, 132'
+      borderColor: 'rgba(225, 115, 34, 1)',
+      backgroundColor: 'rgba(225, 115, 34, 0.5)',
+      pointRadius: 6,
+      pointBorderColor: 'rgba(63, 65, 77)',
+      pointBackgroundColor: 'rgba(225, 115, 34, 1)'
     }
   ]
 }

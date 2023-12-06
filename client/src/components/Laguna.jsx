@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Dialog } from "./Dialog"
 import { useState } from "react"
 

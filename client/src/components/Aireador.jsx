@@ -24,7 +24,7 @@ export const Aireador = ({ lagunaId, id, frecuencia, encendido }) => {
             justifyContent: 'right',
             alignItems: 'right',
             marginLeft: 7,
-            fontSize: 20,
+            fontSize: 21,
           }}
         >
           <label className="switch">

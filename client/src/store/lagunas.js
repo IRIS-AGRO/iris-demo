@@ -25,6 +25,7 @@ export const useLagunasStore = create((put) => {
 
               return {
                 id: lagunaId,
+                name: lagunaData.name,
                 aireadores: aireadoresArray,
                 od: lagunaData.od || 0,
                 orp: lagunaData.orp || 0,

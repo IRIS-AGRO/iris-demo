@@ -28,6 +28,7 @@ export const Dialog = ({
   onOpen,
   onClose,
   id,
+  name,
   od,
   orp,
   Aireadores,
@@ -61,7 +62,7 @@ export const Dialog = ({
         </div>
         <div className='col-12 row mx-auto p-2 ps-5 pe-5 pb-5'>
           <div className='col-8'>
-            <h1 className='fs-2 mb-0'>Laguna {id}</h1>
+            <h1 className='fs-2 mb-0'>Laguna {name}</h1>
             <h2 className='fs-5 text-secondary fw-light'>Aireadores</h2>
           </div>
           <div className='col-4 text-end fw-bold'>

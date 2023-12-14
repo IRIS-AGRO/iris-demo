@@ -22,7 +22,7 @@ export const Dashboard = () => {
       setAbleToSlide(true)
     }
 
-    console.log(lagunas.length)
+    //console.log(lagunas.length)
   }, [lagunas.length])
 
   const [startIndex, setStartIndex] = useState(0)
@@ -82,6 +82,7 @@ export const Dashboard = () => {
               <Laguna
                 key={laguna.id}
                 id={laguna.id}
+                name={laguna.name}
                 orp={laguna.orp}
                 od={laguna.od}
                 cantidad={laguna.aireadores.length}

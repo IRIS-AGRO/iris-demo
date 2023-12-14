@@ -16,7 +16,7 @@ export const Carousel = ({ children, onRight, onLeft, ableToSlide }) => {
     }
   }
 
-  console.log(ableToSlide)
+  //console.log(ableToSlide)
 
   return (
     <div className='ms-0 me-0 col-8 row pt-3' style={of}>
